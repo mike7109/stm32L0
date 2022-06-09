@@ -1,0 +1,50 @@
+//      HAL_StatusTypeDef status = HAL_OK;
+//      status = HAL_I2C_Mem_Read(&hi2c1, 0x12, 0xff, I2C_MEMADD_SIZE_8BIT, value1, 2, 0x10000);
+//      if(status != HAL_OK) {     
+//        temp = 10;
+//      } else {
+//        temp = 20;
+//      }
+//      
+//      addr = addr + 1;
+//      
+//      if (addr == 0) {
+//        temp = 30;
+//        HAL_GPIO_TogglePin(GPIOA, EN_BQ_Pin);
+//      }
+//      
+//      if (HAL_SMBUS_Master_Transmit_IT(&hsmbus1, 0x12, buffertx, 1, SMBUS_FIRST_FRAME) != HAL_OK)
+//      {
+//        temp = 10;
+//      }
+//      
+//      while(HAL_SMBUS_GetState(&hsmbus1) != HAL_SMBUS_STATE_READY);
+//      
+//      if (HAL_SMBUS_Master_Receive_IT(&hsmbus1, 0x12, bufferrx, 2, SMBUS_LAST_FRAME_NO_PEC) != HAL_OK)
+//      {
+//        temp = 20;
+//      }
+//      
+//      if (bufferrx[0] != 0 || bufferrx[1] != 0) {
+//        temp = 20;
+//      }
+//      
+//        while(HAL_SMBUS_GetState(&hsmbus1) != HAL_SMBUS_STATE_READY);
+      
+      
+      HAL_Delay(1000);
+      
+//      pf = BME280_ReadPressure();
+//      hf = BME280_ReadHumidity();
+      //buff_uart[0] = 0x01;
+      //HAL_UART_Transmit_IT(&huart1, buff_uart, 1);
+      //HAL_Delay(1000);
+      
+//      if (cnt > 8) {
+//        HAL_Delay(10);
+//        HAL_GPIO_WritePin(GPIOA, UART_DE_Pin, GPIO_PIN_SET);
+//        HAL_UART_Transmit(&huart1, buff_uart, cnt, 0xffff);
+//        HAL_GPIO_WritePin(GPIOA, UART_DE_Pin, GPIO_PIN_RESET);
+//        cnt = 0;
+//      }
+
