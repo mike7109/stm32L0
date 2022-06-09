@@ -158,7 +158,9 @@ int main(void)
   {  
       // получение температуры
       tf = BME280_ReadTemperature();
-      temp = tf;   
+      temp = tf;
+      
+      HAL_Delay(100);
       
       
     /* USER CODE END WHILE */
@@ -322,7 +324,7 @@ static void MX_TIM6_Init(void)
   htim6.Instance = TIM6;
   htim6.Init.Prescaler = 15;
   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim6.Init.Period = 500;
+  htim6.Init.Period = 2500;
   htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
   {
@@ -521,6 +523,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     {
         uint16_t addr_var = 0;
         uint16_t num_word = 0;
+        uint8_t addr_array = 0;
         
         if (cnt > 4) {
             HAL_TIM_Base_Stop_IT(&htim6);
@@ -529,25 +532,26 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
             if (buff_uart[0] == ID_STM32 && CheckCRC16(buff_uart, cnt)) {
                 addr_var = (buff_uart[2] << 8) |  buff_uart[3];
                 num_word = (buff_uart[4] << 8) |  buff_uart[5];
+                buff_uart[2] = num_word * 2;
                 if (buff_uart[1] == 0x03) { // чтение
-                    for(int i = 0; i < num_word; i++) {                    
+                    for(uint16_t i = 0; i < num_word; i = i + 1) {                         
                         switch (addr_var) {
                             case 0x0001: // чтение темпы
-                                buff_uart[i + 3] = (temp >> 8) & 0xFF;
-                                buff_uart[i + 4] = temp & 0xFF;
+                                buff_uart[addr_array + 3] = (temp >> 8) & 0xFF;
+                                buff_uart[addr_array + 4] = temp & 0xFF;
                                 break;
                             case 0x0002: // еще переменная
-                                buff_uart[i + 3] = (temp >> 8) & 0xFF;
-                                buff_uart[i + 4] = temp & 0xFF;
+                                buff_uart[addr_array + 3] = 0x33;
+                                buff_uart[addr_array + 4] = 0x44;
                                 break;
                             default:
                                 //ошибка
                               break;
                         }
                         addr_var = addr_var + 1;
+                        addr_array = addr_array + 2;
                     }
                     
-                    buff_uart[2] = ((buff_uart[2] << 8) |  buff_uart[3]) * 2;
                     cnt = GenCRC16(buff_uart, buff_uart[2] + 3);
                 
                 } else if (buff_uart[1] == 0x06) { // запись
@@ -558,11 +562,10 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
             
             HAL_GPIO_WritePin(GPIOA, UART_DE_Pin, GPIO_PIN_SET); // активация передачи
             HAL_UART_Transmit_IT(&huart1, buff_uart, cnt);
-
-            cnt = 0;
-        } else {
-            cnt = 0;
-        }     
+        } else {           
+            HAL_UART_Receive_IT(&huart1, &str, 1);
+        } 
+        cnt = 0;
     }
 }
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {

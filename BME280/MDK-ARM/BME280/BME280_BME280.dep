@@ -39,7 +39,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_smbus.h)(0x6276EF76)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_smbus_ex.h)(0x6276EF76)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x602569C8)
 F (..\Core\Inc\BME280.h)(0x6290A39B)()
-F (../Core/Src/main.c)(0x62A1D4F6)(--c99 -c --cpu Cortex-M0+ -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_BME280-IC:\Users\Mishail\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mishail\AppData\Local\Arm\Packs\Keil\STM32L0xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32L051xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32L051xx-o bme280\main.o --omf_browse bme280\main.crf --depend bme280\main.d)
+F (../Core/Src/main.c)(0x62A27939)(--c99 -c --cpu Cortex-M0+ -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_BME280-IC:\Users\Mishail\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mishail\AppData\Local\Arm\Packs\Keil\STM32L0xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32L051xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32L051xx-o bme280\main.o --omf_browse bme280\main.crf --depend bme280\main.d)
 I (../Core/Inc/main.h)(0x629E7AF7)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x6276EF76)
 I (../Core/Inc/stm32l0xx_hal_conf.h)(0x629FBDC1)
